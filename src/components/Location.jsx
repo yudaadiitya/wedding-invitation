@@ -78,7 +78,8 @@ const Location = () => {
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
                 title="Lokasi Pernikahan - Dsn. Bojong Inong, Jatimulya, Sumedang"
               ></iframe>
               {/* Pin pulse overlay (decorative) */}

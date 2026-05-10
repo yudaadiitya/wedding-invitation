@@ -2,18 +2,24 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Heart, Sparkles, Mail, User } from 'lucide-react'
 import { useMemo, useRef } from 'react'
 
+const MAX_GUEST_NAME_LENGTH = 60
+
 const formatGuestName = (raw) => {
   if (!raw) return ''
   try {
-    return decodeURIComponent(raw)
+    const decoded = decodeURIComponent(raw).slice(0, MAX_GUEST_NAME_LENGTH)
+    const cleaned = decoded
       .replace(/[-_+]+/g, ' ')
+      .replace(/[^\p{L}\p{N}\s.&,'()]/gu, '')
       .replace(/\s+/g, ' ')
       .trim()
+    if (!cleaned) return ''
+    return cleaned
       .split(' ')
       .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
       .join(' ')
   } catch {
-    return raw
+    return ''
   }
 }
 

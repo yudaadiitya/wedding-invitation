@@ -97,6 +97,7 @@ const GuestBook = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                maxLength={60}
                 className="w-full px-4 py-3 border-2 border-dusty-blue-100 bg-dusty-blue-50/40 rounded-xl focus:outline-none focus:border-gold-400 focus:bg-white focus:ring-4 focus:ring-gold-100 font-sans transition-all duration-300"
                 placeholder="Masukkan nama Anda"
               />
@@ -112,9 +113,13 @@ const GuestBook = () => {
                 onChange={handleChange}
                 required
                 rows="4"
+                maxLength={500}
                 className="w-full px-4 py-3 border-2 border-dusty-blue-100 bg-dusty-blue-50/40 rounded-xl focus:outline-none focus:border-gold-400 focus:bg-white focus:ring-4 focus:ring-gold-100 font-sans resize-none transition-all duration-300"
                 placeholder="Tulis ucapan dan doa untuk kami..."
               ></textarea>
+              <p className="text-xs text-dusty-blue-400 text-right font-sans">
+                {formData.message.length}/500
+              </p>
             </div>
 
             <div className="space-y-2">
