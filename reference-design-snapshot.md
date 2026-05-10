@@ -1,0 +1,226 @@
+- generic [ref=e13]:
+  - generic [ref=e14]:
+    - heading "Design & Preset" [level=1] [ref=e49]:
+      - text: Design &
+      - text: Preset
+    - link [ref=e51] [cursor=pointer]:
+      - /url: "#"
+    - link "music note list" [ref=e52] [cursor=pointer]:
+      - /url: "#"
+      - img "music note list" [ref=e53]
+    - list [ref=e61]:
+      - listitem [ref=e62]:
+        - link "suit heart fill Couple" [ref=e63] [cursor=pointer]:
+          - /url: "#coupleProfile"
+          - img "suit heart fill" [ref=e64]
+          - generic: Couple
+      - listitem [ref=e67]:
+        - link "images Galleries" [ref=e68] [cursor=pointer]:
+          - /url: "#galleries"
+          - img "images" [ref=e69]
+          - generic: Galleries
+      - listitem [ref=e73]:
+        - link "calendar Date" [ref=e74] [cursor=pointer]:
+          - /url: "#countdown"
+          - img "calendar" [ref=e75]
+          - generic: Date
+      - listitem [ref=e78]:
+        - link "map Location" [ref=e79] [cursor=pointer]:
+          - /url: "#maps"
+          - img "map" [ref=e80]
+          - generic: Location
+      - listitem [ref=e83]:
+        - link "pencil square Wishes" [ref=e84] [cursor=pointer]:
+          - /url: "#wishes"
+          - img "pencil square" [ref=e85]
+          - generic: Wishes
+  - generic [ref=e89]:
+    - generic [ref=e93]:
+      - generic [ref=e343]:
+        - paragraph [ref=e344]: The Wedding Of
+        - heading "Design & Preset" [level=1] [ref=e346]
+        - paragraph [ref=e347]: Tuesday, June 30th, 2026
+      - generic [ref=e348]:
+        - img [ref=e349]
+        - paragraph [ref=e351]: scroll down
+    - generic [ref=e95]:
+      - paragraph [ref=e101]: "Allah's blessings message يَتَفَكَّرُونَ Meaning: \"And among the signs of His power is that He created for you wives of your own kind, so that you would be inclined and feel at ease with them, and He made among you a feeling of love and affection. Indeed, in that there are truly signs for a person who thinks.\" (QS. Ar-Rum: 21)"
+      - generic [ref=e102]:
+        - heading "The Wedding Of" [level=1] [ref=e103]
+        - generic [ref=e106]:
+          - generic [ref=e111]:
+            - paragraph [ref=e112]:
+              - link "instagram adinda" [ref=e113] [cursor=pointer]:
+                - /url: https://instagram.com/adinda
+                - generic [ref=e114]:
+                  - img "instagram" [ref=e115]
+                  - text: adinda
+            - heading "Adinda Mawaria" [level=4] [ref=e118]
+            - paragraph [ref=e119]: youngest Daughter of
+            - paragraph [ref=e120]: Bapak Sanusi S.M &
+            - paragraph [ref=e121]: Ibu Jubaedah
+            - paragraph [ref=e122]: dari london utara
+          - heading "&" [level=1] [ref=e124]
+          - generic [ref=e129]:
+            - paragraph [ref=e130]:
+              - link "instagram john_doe" [ref=e131] [cursor=pointer]:
+                - /url: https://instagram.com/john_doe
+                - generic [ref=e132]:
+                  - img "instagram" [ref=e133]
+                  - text: john_doe
+            - heading "John Doe S.kom" [level=4] [ref=e136]
+            - paragraph [ref=e137]: First Son of
+            - paragraph [ref=e138]: Bapak Akbar S.kom &
+            - paragraph [ref=e139]: Ibu Siti maimunah
+            - paragraph [ref=e140]: dari jakarta, Indonesia
+      - generic [ref=e356]:
+        - heading "Our Love Story" [level=1] [ref=e357]
+        - generic [ref=e358]:
+          - img "arrow left" [ref=e360] [cursor=pointer]
+          - img "arrow right" [ref=e364] [cursor=pointer]
+          - generic [ref=e369]:
+            - generic [ref=e371]:
+              - link [ref=e372] [cursor=pointer]:
+                - /url: "#"
+              - paragraph [ref=e373]: The Beginning
+            - generic [ref=e375]:
+              - link [ref=e376] [cursor=pointer]:
+                - /url: "#"
+              - paragraph [ref=e377]: First Date
+            - generic [ref=e379]:
+              - link [ref=e380] [cursor=pointer]:
+                - /url: "#"
+              - paragraph [ref=e381]: The Proposal
+            - generic [ref=e383]:
+              - link [ref=e384] [cursor=pointer]:
+                - /url: "#"
+              - paragraph [ref=e385]: Our Wedding
+      - generic:
+        - generic:
+          - iframe [ref=e387]:
+            - generic [active] [ref=f6e1]:
+              - generic "YouTube Video Player" [ref=f6e3]
+              - button "Show player controls" [ref=f6e7] [cursor=pointer]
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - heading "Precious moment" [level=1] [ref=e146]
+              - paragraph [ref=e148]: "\"Creating memories is a priceless gift. Memories last a lifetime; objects last only a short time.\" *title and words can be edited in the gallery menu"
+            - alert [ref=e151]:
+              - text: Anda Belum Mengupload gallery,
+              - text: silahkan upload moment terbaikmu di Gallery Section.
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - heading "Save the Date" [level=1] [ref=e155]
+            - list [ref=e156]:
+              - listitem [ref=e157]:
+                - generic [ref=e158]: "53"
+                - text: days
+              - listitem [ref=e159]:
+                - generic [ref=e160]: "12"
+                - text: hours
+              - listitem [ref=e161]:
+                - generic [ref=e162]: "02"
+                - text: minutes
+              - listitem [ref=e163]:
+                - generic [ref=e164]: "31"
+                - text: seconds
+            - paragraph [ref=e165]: Tuesday, June 30th, 2026
+          - generic [ref=e167]:
+            - link "calendar plus Save the date" [ref=e169] [cursor=pointer]:
+              - /url: "https://www.google.com/calendar/render?action=TEMPLATE&text=The%20Wedding%20Of%20Preset%20-%20Design&ctz=Asia/Jakarta&dates=20260630T090000/20260630T090000%7D&details=The%20Wedding%20Of%20Preset%20-%20Design&location=Plataran%20Menteng,%20Jalan%20HOS.%20Cokroaminoto,%20RT.6/RW.4,%20Gondangdia,%20Kota%20Jakarta%20Pusat,%20Daerah%20Khusus%20Ibukota%20Jakarta,%20Indonesia.t&sprop=&sprop=name:"
+              - img "calendar plus" [ref=e170]
+              - text: Save the date
+            - button "bell turn on notifications" [ref=e393] [cursor=pointer]:
+              - img "bell" [ref=e394]
+              - text: turn on notifications
+        - generic [ref=e174]:
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - heading "marriage contract" [level=1] [ref=e179]
+              - paragraph [ref=e180]: Friday, April 28th, 2023
+              - paragraph [ref=e181]:
+                - img "clock" [ref=e182]
+                - text: at 09:00 WIB - finish
+              - paragraph [ref=e186]:
+                - img "geo alt" [ref=e187]
+                - text: Masjid Al - Barkah, Jl. Veteran No.46, RT.003/RW.004, Marga Jaya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17141
+              - paragraph [ref=e191]:
+                - link "see location" [ref=e192] [cursor=pointer]:
+                  - /url: https://maps.google.com/?cid=685464459623750616
+            - generic [ref=e193]:
+              - heading "reception" [level=1] [ref=e194]
+              - paragraph [ref=e195]: Friday, March 15th, 2024
+              - paragraph [ref=e196]:
+                - img "clock" [ref=e197]
+                - text: at 15:00 WIB - finish
+              - paragraph [ref=e201]:
+                - img "geo alt" [ref=e202]
+                - text: DoubleTree by Hilton Jakarta - Diponegoro Jakarta Pusat
+              - paragraph [ref=e206]:
+                - link "see location" [ref=e207] [cursor=pointer]:
+                  - /url: https://www.google.com/maps/place/Plataran+Menteng/@-6.191967,106.8263864,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f423590651f7:0x983424b56075bd8!8m2!3d-6.191967!4d106.8285751
+          - generic [ref=e208]:
+            - iframe [ref=e405]:
+              
+            - generic [ref=e212]:
+              - paragraph [ref=e213]: Plataran Menteng, Jalan HOS. Cokroaminoto, RT.6/RW.4, Gondangdia, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia.
+              - paragraph [ref=e214]:
+                - link "see location" [ref=e215] [cursor=pointer]:
+                  - /url: https://maps.google.com/?q=Monas&ftid=0x2e69f5d2db8c5617:0x4e446b7ac891d847
+          - generic [ref=e217]:
+            - paragraph [ref=e219]:
+              - text: 337 guest response will join,
+              - text: let's send your response too.
+            - button "card checklist Reservation (RSVP)" [ref=e220] [cursor=pointer]:
+              - img "card checklist" [ref=e221]
+              - text: Reservation (RSVP)
+          - generic [ref=e225]:
+            - paragraph [ref=e226]: It is an honor and happiness for us if, Mr / Mrs / Brother / i. Thank you for coming to give us your blessing.
+            - paragraph [ref=e227]: "also invite:"
+            - list [ref=e228]:
+              - listitem [ref=e229]: Keluarga Besar Bapak Sujono
+              - listitem [ref=e230]: Keluarga Besar PT Emence
+              - listitem [ref=e231]: Teman Teman SMKN 1
+      - generic [ref=e233]:
+        - heading "Live Streaming" [level=1] [ref=e234]
+        - paragraph [ref=e235]: Please join the live streaming. *live streaming words/notes can be edited in the live streaming menu csdcsd
+        - paragraph [ref=e236]:
+          - link "camera video go to streaming" [ref=e237] [cursor=pointer]:
+            - /url: https://www.instagram.com/ourwedding.link/adf
+            - img "camera video" [ref=e238]
+            - text: go to streaming
+      - generic [ref=e243]:
+        - heading "Wishes" [level=1] [ref=e244]
+        - generic [ref=e246]:
+          - generic [ref=e248]:
+            - generic [ref=e250]: D
+            - generic [ref=e252]:
+              - paragraph [ref=e254]:
+                - text: Dee
+                - text: at Bogor
+              - paragraph [ref=e255]: "\"Beautiful 💞\""
+          - generic [ref=e257]:
+            - generic [ref=e259]: OW
+            - generic [ref=e261]:
+              - paragraph [ref=e263]:
+                - text: Our Wedding Link
+                - text: at Bekasi
+              - paragraph [ref=e264]: "\"Beatiful design matters. happy for all of you that want going to married\""
+          - generic [ref=e266]:
+            - generic [ref=e268]: T
+            - generic [ref=e270]:
+              - paragraph [ref=e272]:
+                - text: test
+                - text: at KABUPATEN KUANTAN SINGINGI
+              - paragraph [ref=e273]: "\"kraerr\""
+        - generic [ref=e275]:
+          - paragraph [ref=e276]: "Send a wish:"
+          - generic [ref=e277]:
+            - group [ref=e278]:
+              - textbox "Your full name" [ref=e280]
+            - group [ref=e281]:
+              - textbox "Your address" [ref=e283]
+            - group [ref=e284]:
+              - 'textbox "ex: congrats for this event" [ref=e286]'
+            - button "submit now" [ref=e288] [cursor=pointer]

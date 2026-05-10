@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #f5f5f5;
+  color: #333;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #9BB5CE, #D4AF37);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7a9ab8, #B8962E);
+}
+
+::selection {
+  background-color: rgba(212, 175, 55, 0.35);
+  color: #2d3e54;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-dark {
+    background: rgba(58, 80, 107, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #E8C468 0%, #D4AF37 50%, #8C7022 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #5e7fa0 0%, #3a506b 50%, #1f2a3a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+    animation: shimmerSweep 2.6s linear infinite;
+  }
+
+  .border-gradient-gold {
+    border: 2px solid transparent;
+    background-image:
+      linear-gradient(white, white),
+      linear-gradient(135deg, #E8C468, #D4AF37, #B8962E);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(rgba(155, 181, 206, 0.25) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .perspective-card {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes shimmerSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* Rotating gradient ring for photo frames */
+.gradient-ring {
+  position: relative;
+}
+.gradient-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  padding: 4px;
+  background: conic-gradient(from 0deg, #E8C468, #9BB5CE, #D4AF37, #c1d5e8, #E8C468);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin 8s linear infinite;
+}
+
+/* Animated gradient text */
+.animate-gradient-text {
+  background: linear-gradient(
+    90deg,
+    #5e7fa0,
+    #D4AF37,
+    #5e7fa0,
+    #D4AF37
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientText 6s linear infinite;
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Sparkle background */
+.sparkle-bg::before {
+  content: '✦';
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Reduced motion safeguard */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
