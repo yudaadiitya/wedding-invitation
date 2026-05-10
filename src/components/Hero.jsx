@@ -1,9 +1,28 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Heart, Sparkles, Mail } from 'lucide-react'
-import { useRef } from 'react'
+import { Heart, Sparkles, Mail, User } from 'lucide-react'
+import { useMemo, useRef } from 'react'
+
+const formatGuestName = (raw) => {
+  if (!raw) return ''
+  try {
+    return decodeURIComponent(raw)
+      .replace(/[-_+]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .split(' ')
+      .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+      .join(' ')
+  } catch {
+    return raw
+  }
+}
 
 const Hero = ({ onOpen, isOpened }) => {
   const ref = useRef(null)
+  const guestName = useMemo(
+    () => formatGuestName(new URLSearchParams(window.location.search).get('to')),
+    []
+  )
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -180,6 +199,28 @@ const Hero = ({ onOpen, isOpened }) => {
             Sabtu
           </p>
         </motion.div>
+
+        {!isOpened && guestName && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 2 }}
+            className="mb-8"
+          >
+            <p className="font-sans text-xs md:text-sm text-dusty-blue-600 tracking-[0.3em] uppercase mb-3">
+              Kepada Yth. Bapak/Ibu/Saudara/i
+            </p>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur-sm border border-gold-300/50 px-6 py-2 shadow-sm">
+              <User className="w-4 h-4 text-gold-500" />
+              <p className="font-script text-2xl md:text-3xl text-dusty-blue-800">
+                {guestName}
+              </p>
+            </div>
+            <p className="font-serif text-sm md:text-base text-dusty-blue-600 italic mt-3">
+              Di tempat
+            </p>
+          </motion.div>
+        )}
 
         {!isOpened && (
           <motion.button
