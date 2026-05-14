@@ -14,18 +14,6 @@ const DoaPengantin = () => {
       arabic: 'بَارَكَ اللهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ',
       translation: 'Semoga Allah memberkahimu dan melimpahkan berkah atasmu, serta mengumpulkan kalian berdua dalam kebaikan.',
       source: 'HR. Abu Daud'
-    },
-    {
-      id: 3,
-      arabic: 'اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا وَخَيْرَ مَا جَبَلْتَهَا عَلَيْهِ وَأَعُوذُ بِكَ مِنْ شَرِّهَا وَشَرِّ مَا جَبَلْتَهَا عَلَيْهِ',
-      translation: 'Ya Allah, aku mohon kepada-Mu kebaikan darinya dan kebaikan yang Engkau ciptakan padanya. Aku berlindung kepada-Mu dari kejahatan darinya dan kejahatan yang Engkau ciptakan padanya.',
-      source: 'HR. Muslim'
-    },
-    {
-      id: 4,
-      arabic: 'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً',
-      translation: 'Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.',
-      source: 'QS. Ar-Rum: 21'
     }
   ]
 

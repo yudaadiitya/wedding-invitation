@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Calendar, MapPin, MessageCircle, Gift, Users, Image, BookHeart } from 'lucide-react'
+import { Heart, Calendar, MapPin, MessageCircle, Gift, Users, Sparkles, BookHeart } from 'lucide-react'
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('hero')
@@ -10,7 +10,7 @@ const Navigation = () => {
     { id: 'hero', label: 'Home', icon: Heart },
     { id: 'mempelai', label: 'Couple', icon: Users },
     { id: 'lovestory', label: 'Story', icon: BookHeart },
-    { id: 'gallery', label: 'Gallery', icon: Image },
+    { id: 'gallery', label: "Doa", icon: Sparkles },
     { id: 'countdown', label: 'Date', icon: Calendar },
     { id: 'event', label: 'Event', icon: Calendar },
     { id: 'location', label: 'Location', icon: MapPin },

@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Gift, Copy, Check, CreditCard } from 'lucide-react'
+import { Gift, Copy, Check, CreditCard, MapPin } from 'lucide-react'
 
 const DigitalEnvelope = () => {
   const [copiedId, setCopiedId] = useState(null)
   const [revealed, setRevealed] = useState(false)
+
+  const giftAddress = {
+    name: 'Asri Aditya Lestari',
+    address: 'Dsn. Bojong Inong RT 01 RW 03, Desa Jatimulya, Kec. Sumedang Utara, Kab. Sumedang (Konter Fauzan Cell, depan SDN Sindang 4)',
+  }
 
   const accounts = [
     {
@@ -174,6 +179,95 @@ const DigitalEnvelope = () => {
               ))}
             </motion.div>
           </AnimatePresence>
+        )}
+
+        {revealed && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mt-8"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 rounded-3xl opacity-20 group-hover:opacity-40 blur-xl transition-opacity duration-500" />
+              <div className="relative bg-gradient-to-br from-gold-100/40 to-white p-6 md:p-8 rounded-3xl shadow-xl ring-1 ring-gold-200/60 overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-gold-100 rounded-full blur-2xl opacity-50 pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-5">
+                  <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-2 shrink-0">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-gold-400 to-gold-600 text-white shadow-glow-gold">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-gold-700 opacity-80">
+                        Kirim Hadiah
+                      </p>
+                      <p className="font-display text-lg font-semibold text-dusty-blue-800 md:hidden">
+                        Alamat Pengiriman
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <p className="hidden md:block font-display text-xl font-semibold text-dusty-blue-800 mb-3">
+                      Alamat Pengiriman Hadiah
+                    </p>
+                    <div className="space-y-2.5">
+                      <div>
+                        <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-dusty-blue-500 opacity-80 mb-0.5">
+                          Penerima
+                        </p>
+                        <p className="font-display text-base md:text-lg font-semibold text-dusty-blue-900">
+                          {giftAddress.name}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-dusty-blue-500 opacity-80 mb-0.5">
+                          Alamat
+                        </p>
+                        <p className="font-serif text-sm md:text-base leading-relaxed text-dusty-blue-700">
+                          {giftAddress.address}
+                        </p>
+                      </div>
+                    </div>
+
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => copyToClipboard(`${giftAddress.name}\n${giftAddress.address}`, 'address')}
+                      className="mt-5 inline-flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-white font-sans text-sm py-2.5 px-5 rounded-xl shadow-md transition-colors duration-300"
+                    >
+                      <AnimatePresence mode="wait">
+                        {copiedId === 'address' ? (
+                          <motion.span
+                            key="copied-addr"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            className="flex items-center gap-2"
+                          >
+                            <Check className="w-4 h-4" />
+                            Alamat Tersalin!
+                          </motion.span>
+                        ) : (
+                          <motion.span
+                            key="copy-addr"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            className="flex items-center gap-2"
+                          >
+                            <Copy className="w-4 h-4" />
+                            Salin Alamat
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                    </motion.button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         )}
 
         <motion.div

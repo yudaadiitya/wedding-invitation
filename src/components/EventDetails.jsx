@@ -39,7 +39,34 @@ const EventDetails = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.9 }}
+          className="text-center mb-14 max-w-3xl mx-auto"
+        >
+          <p className="font-arabic text-3xl md:text-5xl text-gold-600 leading-relaxed mb-4 drop-shadow-[0_0_12px_rgba(212,175,55,0.25)]">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </p>
+          <p className="font-display italic text-lg md:text-xl text-dusty-blue-700 mb-2">
+            Bismillahirrahmanirrahiim
+          </p>
+          <p className="font-display text-base md:text-lg text-dusty-blue-800 mb-6 tracking-wide">
+            Assalamu'alaikum Warahmatullahi Wabarakatuh
+          </p>
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-gradient-to-r from-transparent to-gold-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />
+            <span className="h-px w-10 bg-gradient-to-l from-transparent to-gold-400" />
+          </div>
+          <p className="font-serif italic text-base md:text-lg text-dusty-blue-600 leading-relaxed px-4">
+            Dengan memohon Rahmat dan Ridho Allah SWT, kami bermaksud menyelenggarakan resepsi
+            pernikahan putra-putri kami yang Insya Allah akan diselenggarakan pada:
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-14"
         >
           <div className="inline-flex items-center gap-3 mb-4">
