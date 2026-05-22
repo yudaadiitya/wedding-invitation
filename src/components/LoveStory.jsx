@@ -24,7 +24,7 @@ const LoveStory = () => {
       icon: Sparkles,
       title: 'Khitbah',
       date: 'April 2026',
-      description: 'Dalam proses yang sederhana namun penuh makna, kami belajar bahwa cinta terbaik bukanlah yang datang terburu-buru, melainkan yang hadir bersama keseriusan. Dari pertemuan singkat yang dijaga adabnya, hadir keyakinan yang menguatkan langkah menuju khitbah. Hari itu menjadi awal dari doa-doa yang semakin dipersatukan. Bukan tentang seberapa lama mengenal, tetapi tentang seberapa yakin kami melibatkan Allah dalam setiap keputusan.',
+      description: 'Dalam proses yang sederhana namun penuh makna, kami belajar bahwa cinta terbaik bukanlah yang datang terburu-buru, melainkan yang hadir bersama keseriusan. Dari pertemuan singkat yang dijaga adabnya, hadir keyakinan yang menguatkan langkah menuju khitbah. Hari itu menjadi awal dari doa-doa yang semakin dipersatukan. Bukan tentang memiliki hubungan spesial atau seberapa lama saling mengenal, tetapi tentang seberapa yakin kami melibatkan Allah dalam setiap keputusan.',
       side: 'right'
     },
     {
