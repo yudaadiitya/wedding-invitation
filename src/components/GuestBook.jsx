@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, Send, User, Heart, Check } from 'lucide-react'
+import { MessageCircle, Send, User, Heart, Check, AlertCircle } from 'lucide-react'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
+
+const LOCAL_KEY = 'guestbook_asri_ayuda'
 
 const GuestBook = () => {
   const [formData, setFormData] = useState({
@@ -10,28 +13,85 @@ const GuestBook = () => {
   })
   const [messages, setMessages] = useState([])
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const usingSupabase = isSupabaseConfigured()
 
   useEffect(() => {
-    const savedMessages = localStorage.getItem('guestbook_asri_ayuda')
-    if (savedMessages) {
-      setMessages(JSON.parse(savedMessages))
+    let cancelled = false
+    const load = async () => {
+      if (usingSupabase) {
+        const { data, error } = await supabase
+          .from('guestbook')
+          .select('id, name, message, attendance, created_at')
+          .order('created_at', { ascending: false })
+          .limit(100)
+        if (cancelled) return
+        if (error) {
+          setError('Gagal memuat ucapan tamu.')
+          return
+        }
+        setMessages(data.map((row) => ({
+          id: row.id,
+          name: row.name,
+          message: row.message,
+          attendance: row.attendance,
+          date: row.created_at,
+        })))
+      } else {
+        const saved = localStorage.getItem(LOCAL_KEY)
+        if (saved) setMessages(JSON.parse(saved))
+      }
     }
-  }, [])
+    load()
+    return () => { cancelled = true }
+  }, [usingSupabase])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    if (loading) return
+    setError('')
+    setLoading(true)
 
-    const newMessage = {
-      id: Date.now(),
-      name: formData.name,
-      message: formData.message,
+    const payload = {
+      name: formData.name.trim(),
+      message: formData.message.trim(),
       attendance: formData.attendance,
-      date: new Date().toISOString()
     }
 
-    const updatedMessages = [newMessage, ...messages]
-    setMessages(updatedMessages)
-    localStorage.setItem('guestbook_asri_ayuda', JSON.stringify(updatedMessages))
+    if (usingSupabase) {
+      const { data, error } = await supabase
+        .from('guestbook')
+        .insert(payload)
+        .select('id, name, message, attendance, created_at')
+        .single()
+
+      setLoading(false)
+
+      if (error) {
+        setError('Gagal mengirim ucapan. Silakan coba lagi.')
+        return
+      }
+
+      setMessages((prev) => [{
+        id: data.id,
+        name: data.name,
+        message: data.message,
+        attendance: data.attendance,
+        date: data.created_at,
+      }, ...prev])
+    } else {
+      const newMessage = {
+        id: Date.now(),
+        ...payload,
+        date: new Date().toISOString(),
+      }
+      const updated = [newMessage, ...messages]
+      setMessages(updated)
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(updated))
+      setLoading(false)
+    }
 
     setFormData({ name: '', message: '', attendance: 'hadir' })
     setSubmitted(true)
@@ -156,19 +216,31 @@ const GuestBook = () => {
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group/btn relative w-full overflow-hidden rounded-xl py-3.5 font-sans font-medium text-white flex items-center justify-center gap-2 shadow-glow-blue"
+              disabled={loading}
+              whileHover={loading ? {} : { scale: 1.02, y: -2 }}
+              whileTap={loading ? {} : { scale: 0.98 }}
+              className="group/btn relative w-full overflow-hidden rounded-xl py-3.5 font-sans font-medium text-white flex items-center justify-center gap-2 shadow-glow-blue disabled:opacity-60 disabled:cursor-not-allowed"
               style={{
                 background: 'linear-gradient(135deg, #5e7fa0 0%, #4a6686 50%, #3a506b 100%)',
               }}
             >
               <span className="absolute inset-0 shimmer-bg opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
               <Send className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
-              <span className="relative z-10 tracking-wider">Kirim Ucapan</span>
+              <span className="relative z-10 tracking-wider">{loading ? 'Mengirim...' : 'Kirim Ucapan'}</span>
             </motion.button>
 
             <AnimatePresence>
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.9 }}
+                  className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-50 border-2 border-red-200 text-red-700 font-sans"
+                >
+                  <AlertCircle className="w-5 h-5" />
+                  {error}
+                </motion.div>
+              )}
               {submitted && (
                 <motion.div
                   initial={{ opacity: 0, y: -10, scale: 0.9 }}
