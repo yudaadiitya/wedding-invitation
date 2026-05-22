@@ -1,20 +1,26 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, Send, User, Heart, Check, AlertCircle } from 'lucide-react'
 import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
 const LOCAL_KEY = 'guestbook_asri_ayuda'
+const LAST_SUBMIT_KEY = 'guestbook_last_submit'
+const MIN_FILL_MS = 3000
+const COOLDOWN_MS = 30_000
+const URL_PATTERN = /(https?:\/\/|www\.)/i
 
 const GuestBook = () => {
   const [formData, setFormData] = useState({
     name: '',
     message: '',
-    attendance: 'hadir'
+    attendance: 'hadir',
+    website: '', // honeypot — must stay empty
   })
   const [messages, setMessages] = useState([])
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const mountedAt = useRef(Date.now())
 
   const usingSupabase = isSupabaseConfigured()
 
@@ -52,6 +58,35 @@ const GuestBook = () => {
     e.preventDefault()
     if (loading) return
     setError('')
+
+    // Honeypot: only bots fill this hidden field.
+    if (formData.website) {
+      setSubmitted(true)
+      setFormData({ name: '', message: '', attendance: 'hadir', website: '' })
+      setTimeout(() => setSubmitted(false), 3000)
+      return
+    }
+
+    // Time-on-page: bots submit instantly.
+    if (Date.now() - mountedAt.current < MIN_FILL_MS) {
+      setError('Mohon isi form sedikit lebih lama, terima kasih.')
+      return
+    }
+
+    // Cooldown per browser.
+    const last = Number(localStorage.getItem(LAST_SUBMIT_KEY) || 0)
+    const remaining = COOLDOWN_MS - (Date.now() - last)
+    if (remaining > 0) {
+      setError(`Mohon tunggu ${Math.ceil(remaining / 1000)} detik sebelum mengirim ucapan lagi.`)
+      return
+    }
+
+    // URL filter: most spam contains links.
+    if (URL_PATTERN.test(formData.message) || URL_PATTERN.test(formData.name)) {
+      setError('Mohon maaf, link tidak diperbolehkan dalam ucapan.')
+      return
+    }
+
     setLoading(true)
 
     const payload = {
@@ -93,7 +128,8 @@ const GuestBook = () => {
       setLoading(false)
     }
 
-    setFormData({ name: '', message: '', attendance: 'hadir' })
+    localStorage.setItem(LAST_SUBMIT_KEY, String(Date.now()))
+    setFormData({ name: '', message: '', attendance: 'hadir', website: '' })
     setSubmitted(true)
     setTimeout(() => setSubmitted(false), 3000)
   }
@@ -147,6 +183,20 @@ const GuestBook = () => {
           <div className="absolute -inset-1 bg-gradient-to-r from-dusty-blue-400 via-gold-400 to-dusty-blue-400 rounded-3xl opacity-30 group-hover:opacity-50 blur-lg transition-opacity duration-500" />
 
           <form onSubmit={handleSubmit} className="relative bg-white p-6 md:p-8 rounded-3xl shadow-soft space-y-5 border border-white/80">
+            {/* Honeypot — hidden from humans, attractive to bots. */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <label htmlFor="gb-website">Website</label>
+              <input
+                id="gb-website"
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.website}
+                onChange={handleChange}
+              />
+            </div>
+
             <div className="space-y-2">
               <label className="block font-sans text-sm tracking-wider uppercase text-dusty-blue-700 font-semibold">
                 Nama
