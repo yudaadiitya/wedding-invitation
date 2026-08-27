@@ -13,8 +13,8 @@ const ScrollProgress = () => {
       className="fixed top-0 left-0 right-0 h-[3px] z-[60] origin-left"
       style={{
         scaleX,
-        background: 'linear-gradient(90deg, #9BB5CE 0%, #D4AF37 50%, #9BB5CE 100%)',
-        boxShadow: '0 0 12px rgba(212,175,55,0.5)',
+        background: 'linear-gradient(90deg, #D9BFBF 0%, #C4A17E 50%, #D9BFBF 100%)',
+        boxShadow: '0 0 12px rgba(196,161,126,0.5)',
       }}
     />
   )

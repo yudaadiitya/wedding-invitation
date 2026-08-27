@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Heart, Sparkles, Mail, User } from 'lucide-react'
 import { useMemo, useRef } from 'react'
+import { couple, weddingDate } from '../data/wedding'
 
 const MAX_GUEST_NAME_LENGTH = 60
 
@@ -26,7 +27,10 @@ const formatGuestName = (raw) => {
 const Hero = ({ onOpen, isOpened }) => {
   const ref = useRef(null)
   const guestName = useMemo(
-    () => formatGuestName(new URLSearchParams(window.location.search).get('to')),
+    () => {
+      const params = new URLSearchParams(window.location.search)
+      return formatGuestName(params.get('untuk') || params.get('to'))
+    },
     []
   )
   const { scrollYProgress } = useScroll({
@@ -37,17 +41,21 @@ const Hero = ({ onOpen, isOpened }) => {
   const yContent = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
-  const nameLetters = 'Asri & Ayuda'.split('')
+  const nameLines = [couple.bride.coverName, '&', couple.groom.coverName]
 
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dusty-blue-100 via-white to-gold-100"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-dusty-blue-900 via-dusty-blue-800 to-dusty-blue-700"
     >
       {/* Animated gradient mesh background */}
       <motion.div
-        style={{ y: yBg }}
-        className="absolute inset-0 bg-mesh-blue opacity-70"
+        className="absolute inset-0 opacity-70"
+        style={{
+          y: yBg,
+          backgroundImage:
+            'radial-gradient(at 50% 25%, #8A4B4B 0px, transparent 55%), radial-gradient(at 0% 100%, #3D2222 0px, transparent 60%), radial-gradient(at 100% 100%, #5A3636 0px, transparent 60%)',
+        }}
       />
 
       {/* Decorative blurred orbs */}
@@ -132,14 +140,17 @@ const Hero = ({ onOpen, isOpened }) => {
           transition={{ duration: 1, delay: 0.4 }}
           className="mb-8"
         >
-          <p className="font-serif text-lg md:text-xl text-dusty-blue-700 mb-3 italic tracking-wide">
+          <p className="font-serif text-lg md:text-xl text-gold-200 mb-3 italic tracking-wide">
             Bismillahirrahmanirrahim
           </p>
-          <p className="font-serif text-base md:text-lg text-dusty-blue-600 mb-1">
+          <p className="font-serif text-base md:text-lg text-dusty-blue-100 mb-1">
             Dengan memohon Rahmat dan Ridho Allah SWT,
           </p>
-          <p className="font-serif text-base md:text-lg text-dusty-blue-600">
+          <p className="font-serif text-base md:text-lg text-dusty-blue-100">
             kami bermaksud menyelenggarakan resepsi pernikahan
+          </p>
+          <p className="font-sans text-[10px] md:text-xs text-gold-600 tracking-[0.4em] uppercase mt-5">
+            {couple.hashtag}
           </p>
         </motion.div>
 
@@ -161,24 +172,35 @@ const Hero = ({ onOpen, isOpened }) => {
             <div className="w-72 h-72 md:w-96 md:h-96 bg-gold-300/40 rounded-full blur-3xl animate-pulse-slow" />
           </div>
 
-          <h1 className="font-script text-6xl md:text-8xl lg:text-9xl relative inline-block">
-            {nameLetters.map((char, i) => (
-              <motion.span
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, y: 60, rotateX: -90 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    rotateX: 0,
-                    transition: { type: 'spring', damping: 14, stiffness: 100 },
-                  },
-                }}
-                style={{ display: 'inline-block' }}
-                className="text-gradient-gold drop-shadow-[0_4px_18px_rgba(212,175,55,0.35)]"
+          <h1 className="font-script relative flex flex-col items-center leading-[0.95]">
+            {nameLines.map((line, lineIdx) => (
+              <span
+                key={lineIdx}
+                className={
+                  line === '&'
+                    ? 'text-4xl md:text-5xl my-1 opacity-90'
+                    : 'text-6xl md:text-8xl lg:text-9xl'
+                }
               >
-                {char === ' ' ? ' ' : char}
-              </motion.span>
+                {line.split('').map((char, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, y: 60, rotateX: -90 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        rotateX: 0,
+                        transition: { type: 'spring', damping: 14, stiffness: 100 },
+                      },
+                    }}
+                    style={{ display: 'inline-block' }}
+                    className="text-gradient-rose drop-shadow-[0_4px_18px_rgba(219,179,138,0.35)]"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
             ))}
           </h1>
 
@@ -188,7 +210,7 @@ const Hero = ({ onOpen, isOpened }) => {
             transition={{ delay: 1.6, duration: 0.6 }}
             className="mt-3"
           >
-            <Heart className="inline-block text-gold-500 w-8 h-8 md:w-10 md:h-10 fill-current animate-heartbeat drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]" />
+            <Heart className="inline-block text-gold-500 w-8 h-8 md:w-10 md:h-10 fill-current animate-heartbeat drop-shadow-[0_0_12px_rgba(196,161,126,0.6)]" />
           </motion.div>
         </motion.div>
 
@@ -198,11 +220,11 @@ const Hero = ({ onOpen, isOpened }) => {
           transition={{ duration: 1, delay: 1.8 }}
           className="mb-10"
         >
-          <p className="font-display text-2xl md:text-4xl text-dusty-blue-800 font-semibold tracking-widest">
-            30 · MEI · 2026
+          <p className="font-display text-2xl md:text-4xl text-gold-200 font-semibold tracking-widest">
+            {weddingDate.compact}
           </p>
-          <p className="font-sans text-sm md:text-base text-dusty-blue-600 mt-2 tracking-[0.3em] uppercase">
-            Sabtu
+          <p className="font-sans text-sm md:text-base text-dusty-blue-200 mt-2 tracking-[0.3em] uppercase">
+            {weddingDate.dayName}
           </p>
         </motion.div>
 
@@ -213,16 +235,16 @@ const Hero = ({ onOpen, isOpened }) => {
             transition={{ duration: 1, delay: 2 }}
             className="mb-8"
           >
-            <p className="font-sans text-xs md:text-sm text-dusty-blue-600 tracking-[0.3em] uppercase mb-3">
+            <p className="font-sans text-xs md:text-sm text-dusty-blue-200 tracking-[0.3em] uppercase mb-3">
               Kepada Yth. Bapak/Ibu/Saudara/i
             </p>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur-sm border border-gold-300/50 px-6 py-2 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-gold-300/40 px-6 py-2 shadow-sm">
               <User className="w-4 h-4 text-gold-500" />
-              <p className="font-script text-2xl md:text-3xl text-dusty-blue-800">
+              <p className="font-script text-3xl md:text-4xl text-gold-200">
                 {guestName}
               </p>
             </div>
-            <p className="font-serif text-sm md:text-base text-dusty-blue-600 italic mt-3">
+            <p className="font-serif text-sm md:text-base text-dusty-blue-200 italic mt-3">
               Di tempat
             </p>
           </motion.div>
@@ -238,7 +260,7 @@ const Hero = ({ onOpen, isOpened }) => {
             onClick={onOpen}
             className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-10 py-4 font-sans font-medium text-white shadow-glow-gold transition-all duration-300"
             style={{
-              background: 'linear-gradient(135deg, #5e7fa0 0%, #4a6686 50%, #3a506b 100%)',
+              background: 'linear-gradient(135deg, #DBB38A 0%, #C4A17E 50%, #B08A62 100%)',
             }}
           >
             <span className="absolute inset-0 shimmer-bg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -275,11 +297,31 @@ const Hero = ({ onOpen, isOpened }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 8, 0] }}
           transition={{ delay: 2.4, duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-dusty-blue-600 text-xs tracking-[0.3em] font-sans uppercase"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-dusty-blue-200 text-xs tracking-[0.3em] font-sans uppercase"
         >
           Scroll
         </motion.div>
       )}
+
+      {/* Wave transition ke section krem */}
+      <div className="absolute bottom-0 left-0 right-0 leading-[0] pointer-events-none">
+        <svg
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          className="w-full h-[70px] md:h-[110px]"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,64 C240,120 480,8 720,40 C960,72 1200,120 1440,72 L1440,120 L0,120 Z"
+            fill="#5A3636"
+            opacity="0.55"
+          />
+          <path
+            d="M0,88 C240,40 480,112 720,80 C960,48 1200,16 1440,56 L1440,120 L0,120 Z"
+            fill="#FBF8F1"
+          />
+        </svg>
+      </div>
     </section>
   )
 }

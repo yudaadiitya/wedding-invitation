@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { MapPin, Navigation as NavigationIcon, Compass } from 'lucide-react'
+import { venue, mapsEmbedUrl, mapsLinkUrl } from '../data/wedding'
 
 const Location = () => {
-  const address = 'Dsn. Bojong Inong, RT 01 RW 03, Desa Jatimulya, Kab. Sumedang'
-  const googleMapsUrl = 'https://maps.app.goo.gl/xCMN5dUGXRDWgjkh9'
+  const address = venue.address
+  const googleMapsUrl = mapsLinkUrl
 
   return (
-    <section className="relative py-20 px-4 bg-white overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-dusty-blue-50 via-white to-dusty-blue-50 overflow-hidden">
       <motion.div
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 14, repeat: Infinity }}
@@ -26,13 +27,13 @@ const Location = () => {
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             className="inline-block mb-4"
           >
-            <Compass className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(212,175,55,0.5)]" />
+            <Compass className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(196,161,126,0.5)]" />
           </motion.div>
           <h2 className="font-script text-5xl md:text-7xl animate-gradient-text mb-3">
             Lokasi Acara
           </h2>
           <p className="font-serif italic text-dusty-blue-500">
-            Kediaman Mempelai Wanita
+            {venue.name}
           </p>
         </motion.div>
 
@@ -72,7 +73,7 @@ const Location = () => {
               className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg ring-2 ring-white mb-6 relative"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0977966847545!2d107.91404931477282!3d-6.875385695024858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68d1f5a5a5a5a5%3A0x1234567890abcdef!2sDsn.%20Bojong%20Inong%2C%20Jatimulya%2C%20Sumedang!5e0!3m2!1sid!2sid!4v1715091200000!5m2!1sid!2sid"
+                src={mapsEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -80,7 +81,7 @@ const Location = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer"
                 sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
-                title="Lokasi Pernikahan - Dsn. Bojong Inong, Jatimulya, Sumedang"
+                title={`Lokasi Pernikahan - ${venue.name}`}
               ></iframe>
               {/* Pin pulse overlay (decorative) */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
@@ -98,7 +99,7 @@ const Location = () => {
                 whileTap={{ scale: 0.95 }}
                 className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full px-8 py-3.5 font-sans font-medium text-white shadow-glow-blue"
                 style={{
-                  background: 'linear-gradient(135deg, #5e7fa0 0%, #4a6686 50%, #3a506b 100%)',
+                  background: 'linear-gradient(135deg, #996D6D 0%, #845B5B 50%, #714646 100%)',
                 }}
               >
                 <span className="absolute inset-0 shimmer-bg opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />

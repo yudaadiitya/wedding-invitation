@@ -1,11 +1,31 @@
 import { motion } from 'framer-motion'
 import { Heart, Sparkles } from 'lucide-react'
+import { couple, weddingDate, closingNote } from '../data/wedding'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-gradient-to-b from-dusty-blue-700 via-dusty-blue-800 to-dusty-blue-900 text-white py-16 px-4 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-dusty-blue-700 via-dusty-blue-800 to-dusty-blue-900 text-white pt-24 pb-16 px-4 overflow-hidden">
+      {/* Wave transition dari section krem */}
+      <div className="absolute top-0 left-0 right-0 leading-[0] pointer-events-none">
+        <svg
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          className="w-full h-[70px] md:h-[110px]"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,0 L1440,0 L1440,56 C1200,16 960,88 720,64 C480,40 240,96 0,48 Z"
+            fill="#FBF8F1"
+          />
+          <path
+            d="M0,0 L1440,0 L1440,32 C1200,72 960,8 720,40 C480,72 240,24 0,64 Z"
+            fill="#5A3636"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
       {/* Floating ambient blobs */}
       <motion.div
         animate={{ scale: [1, 1.2, 1] }}
@@ -55,7 +75,7 @@ const Footer = () => {
           className="flex items-center justify-center gap-4 mb-10"
         >
           <div className="h-px bg-gradient-to-r from-transparent to-gold-400 flex-1" />
-          <Heart className="w-6 h-6 text-gold-400 fill-current animate-heartbeat drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]" />
+          <Heart className="w-6 h-6 text-gold-400 fill-current animate-heartbeat drop-shadow-[0_0_10px_rgba(196,161,126,0.6)]" />
           <div className="h-px bg-gradient-to-l from-transparent to-gold-400 flex-1" />
         </motion.div>
 
@@ -67,11 +87,11 @@ const Footer = () => {
           className="text-center space-y-8"
         >
           <div>
-            <h3 className="font-script text-5xl md:text-6xl mb-3 text-gradient-gold drop-shadow-lg">
-              Asri & Ayuda
+            <h3 className="font-script text-5xl md:text-6xl mb-3 text-gradient-rose drop-shadow-lg">
+              {couple.shortNames}
             </h3>
             <p className="font-display text-lg md:text-xl text-dusty-blue-200 tracking-[0.3em] uppercase">
-              30 · Mei · 2026
+              {weddingDate.footer}
             </p>
           </div>
 
@@ -85,16 +105,13 @@ const Footer = () => {
           </div>
 
           <div className="pt-6 border-t border-white/15">
-            <p className="font-serif text-base md:text-lg mb-1">
-              Merupakan suatu kehormatan dan kebahagiaan bagi kami
-            </p>
-            <p className="font-serif text-base md:text-lg mb-5 text-dusty-blue-100">
-              apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu
+            <p className="font-serif text-base md:text-lg mb-5 text-dusty-blue-100 leading-relaxed">
+              {closingNote}
             </p>
             <p className="font-sans text-xs text-dusty-blue-300 tracking-widest uppercase">
               Atas kehadiran dan doa restunya, kami ucapkan
             </p>
-            <p className="font-script text-2xl md:text-3xl text-gradient-gold mt-3 drop-shadow-md">
+            <p className="font-script text-2xl md:text-3xl text-gradient-rose mt-3 drop-shadow-md">
               Jazakumullah Khairan Katsira
             </p>
           </div>
@@ -102,16 +119,16 @@ const Footer = () => {
           <div className="pt-6">
             <p className="font-serif text-base mb-3 text-dusty-blue-200">Hormat Kami,</p>
             <p className="font-display text-base md:text-lg font-semibold">
-              Kel. Bpk. Atang Hermawan & Ibu Popong Siti Hajar
+              Kel. {couple.bride.parents.father} &amp; {couple.bride.parents.mother}
             </p>
             <p className="font-display text-base md:text-lg font-semibold">
-              Kel. Bpk. Ade Yuspida & Ibu Eli Subiarsih
+              Kel. {couple.groom.parents.father} &amp; {couple.groom.parents.mother}
             </p>
           </div>
 
           <div className="pt-8 border-t border-white/15">
             <p className="font-sans text-xs text-dusty-blue-300 tracking-wider">
-              © {currentYear} Asri & Ayuda Wedding Invitation
+              © {currentYear} {couple.shortNames} Wedding Invitation
             </p>
             <p className="font-sans text-xs text-dusty-blue-400 mt-2">
               Made with <Heart className="inline w-3 h-3 text-gold-400 fill-current animate-heartbeat" /> for a special day

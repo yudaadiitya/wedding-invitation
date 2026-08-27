@@ -1,32 +1,20 @@
 import { motion } from 'framer-motion'
 import { Calendar, Clock, MapPin, Heart } from 'lucide-react'
+import { events as weddingEvents, venue } from '../data/wedding'
 
 const EventDetails = () => {
-  const events = [
-    {
-      title: 'Akad Nikah',
-      subtitle: 'The Sacred Vow',
-      date: 'Sabtu, 30 Mei 2026',
-      time: '08.00 - Selesai',
-      location: 'Kediaman Mempelai Wanita',
-      icon: Calendar,
-      gradient: 'from-dusty-blue-500 to-dusty-blue-700',
-      accent: 'from-dusty-blue-100 to-dusty-blue-200',
-    },
-    {
-      title: 'Resepsi',
-      subtitle: 'The Celebration',
-      date: 'Sabtu, 30 Mei 2026',
-      time: '10.30 s/d Selesai',
-      location: 'Kediaman Mempelai Wanita',
-      icon: Heart,
-      gradient: 'from-gold-500 to-gold-700',
-      accent: 'from-gold-100 to-gold-200',
-    }
-  ]
+  const events = weddingEvents.map((event, i) => ({
+    ...event,
+    icon: i === 0 ? Calendar : Heart,
+    gradient:
+      i === 0
+        ? 'from-dusty-blue-600 to-dusty-blue-800'
+        : 'from-gold-400 to-gold-600',
+    accent: i === 0 ? 'from-dusty-blue-100 to-dusty-blue-200' : 'from-gold-100 to-gold-200',
+  }))
 
   return (
-    <section className="relative py-20 px-4 bg-gradient-to-b from-white via-dusty-blue-50 to-white overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-dusty-blue-50 via-white to-dusty-blue-50 overflow-hidden">
       <div className="absolute inset-0 pattern-dots opacity-30 pointer-events-none" />
       <motion.div
         animate={{ scale: [1, 1.2, 1] }}
@@ -42,7 +30,7 @@ const EventDetails = () => {
           transition={{ duration: 0.9 }}
           className="text-center mb-14 max-w-3xl mx-auto"
         >
-          <p className="font-arabic text-3xl md:text-5xl text-gold-600 leading-relaxed mb-4 drop-shadow-[0_0_12px_rgba(212,175,55,0.25)]">
+          <p className="font-arabic text-3xl md:text-5xl text-gold-600 leading-relaxed mb-4 drop-shadow-[0_0_12px_rgba(196,161,126,0.25)]">
             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
           </p>
           <p className="font-display italic text-lg md:text-xl text-dusty-blue-700 mb-2">
@@ -160,7 +148,13 @@ const EventDetails = () => {
           transition={{ delay: 0.6 }}
           className="text-center mt-10"
         >
-          <p className="font-serif italic text-dusty-blue-600">
+          <div className="inline-flex items-start gap-2 max-w-xl mx-auto px-5 py-3 rounded-2xl bg-gradient-to-r from-dusty-blue-50 to-gold-100/60 text-left">
+            <MapPin className="w-4 h-4 text-gold-600 mt-1 shrink-0" />
+            <p className="font-serif text-sm md:text-base text-dusty-blue-700 leading-relaxed">
+              {venue.address}
+            </p>
+          </div>
+          <p className="font-serif italic text-dusty-blue-600 mt-6">
             Atas kehadiran dan do'a restunya, kami ucapkan terima kasih
           </p>
         </motion.div>

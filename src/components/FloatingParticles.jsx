@@ -27,7 +27,7 @@ const FloatingParticles = ({ count = 18, density = 'normal' }) => {
     >
       {particles.map((p) => {
         const Icon = p.isHeart ? Heart : Sparkles
-        const color = p.isHeart ? '#D4AF37' : '#9BB5CE'
+        const color = p.isHeart ? '#C4A17E' : '#D9BFBF'
         return (
           <span
             key={p.id}
@@ -45,7 +45,7 @@ const FloatingParticles = ({ count = 18, density = 'normal' }) => {
                 width: `${p.size}px`,
                 height: `${p.size}px`,
                 color,
-                filter: 'drop-shadow(0 0 6px rgba(212, 175, 55, 0.4))',
+                filter: 'drop-shadow(0 0 6px rgba(196,161,126, 0.4))',
               }}
               fill={p.isHeart ? color : 'none'}
             />

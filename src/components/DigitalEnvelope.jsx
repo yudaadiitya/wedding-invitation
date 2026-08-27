@@ -1,32 +1,18 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Gift, Copy, Check, CreditCard, MapPin } from 'lucide-react'
+import { giftAccounts, giftAddress as giftAddressData } from '../data/wedding'
 
 const DigitalEnvelope = () => {
   const [copiedId, setCopiedId] = useState(null)
   const [revealed, setRevealed] = useState(false)
 
   const giftAddress = {
-    name: 'Asri Aditya Lestari',
-    address: 'Dsn. Bojong Inong RT 01 RW 03, Desa Jatimulya, Kec. Sumedang Utara, Kab. Sumedang (Konter Fauzan Cell, depan SDN Sindang 4)',
+    name: giftAddressData.contactName,
+    address: giftAddressData.address,
   }
 
-  const accounts = [
-    {
-      id: 'bca',
-      bank: 'BCA',
-      accountNumber: '2330905878',
-      accountName: 'Ayuda Noveliana Megus',
-      gradient: 'from-blue-500 via-blue-600 to-blue-800',
-    },
-    {
-      id: 'mandiri',
-      bank: 'Mandiri',
-      accountNumber: '1310018040537',
-      accountName: 'Asri Aditya Lestari',
-      gradient: 'from-yellow-400 via-yellow-500 to-yellow-700',
-    }
-  ]
+  const accounts = giftAccounts
 
   const copyToClipboard = (accountNumber, id) => {
     navigator.clipboard.writeText(accountNumber)
@@ -35,7 +21,7 @@ const DigitalEnvelope = () => {
   }
 
   return (
-    <section className="relative py-20 px-4 bg-white overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-dusty-blue-50 via-white to-dusty-blue-50 overflow-hidden">
       <motion.div
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 14, repeat: Infinity }}
@@ -55,7 +41,7 @@ const DigitalEnvelope = () => {
             transition={{ duration: 4, repeat: Infinity }}
             className="inline-block mb-4"
           >
-            <Gift className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(212,175,55,0.5)]" />
+            <Gift className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(196,161,126,0.5)]" />
           </motion.div>
           <h2 className="font-script text-5xl md:text-7xl animate-gradient-text mb-3">
             Amplop Digital
@@ -79,7 +65,7 @@ const DigitalEnvelope = () => {
               whileTap={{ scale: 0.95 }}
               className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-10 py-4 font-sans font-medium text-white shadow-glow-gold"
               style={{
-                background: 'linear-gradient(135deg, #E8C468 0%, #D4AF37 50%, #B8962E 100%)',
+                background: 'linear-gradient(135deg, #DBB38A 0%, #C4A17E 50%, #8A6A4A 100%)',
               }}
             >
               <span className="absolute inset-0 shimmer-bg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

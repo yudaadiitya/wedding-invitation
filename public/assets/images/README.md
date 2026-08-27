@@ -2,16 +2,16 @@
 
 ## ✅ SVG Assets Included
 
-Website ini sudah dilengkapi dengan custom SVG floral decorations dengan tema dusty blue & gold:
+Website ini sudah dilengkapi dengan custom SVG floral decorations dengan tema maroon & rose gold:
 
-1. **floral-left.svg** - Dekorasi floral untuk sisi kiri dengan dusty blue roses dan eucalyptus
+1. **floral-left.svg** - Dekorasi floral untuk sisi kiri dengan rose blooms maroon dan dedaunan
 2. **floral-right.svg** - Dekorasi floral untuk sisi kanan (mirrored dari left)
 3. **decorative-border.svg** - Border frame elegan untuk card atau section khusus
 4. **divider.svg** - Elegant divider untuk memisahkan sections
 
 Semua asset SVG ini:
 - ✨ Sudah terintegrasi dalam komponen (Hero, Mempelai, Footer, dan Divider)
-- 🎨 Match dengan tema dusty blue (#9BB5CE) dan gold (#D4AF37)
+- 🎨 Match dengan tema maroon (#714646) dan rose gold (#C4A17E)
 - 📦 Lightweight (vector format)
 - 🔧 Mudah di-customize (edit SVG code jika perlu)
 
@@ -40,8 +40,8 @@ SVG files bisa di-edit langsung! Contoh:
 
 ### Mengubah Warna:
 Buka file SVG dan ubah nilai color:
-- `#9BB5CE` → dusty blue
-- `#D4AF37` → gold
+- `#D9BFBF` → rose muda
+- `#C4A17E` → rose gold
 - `#88a68e` → eucalyptus green
 
 ### Mengubah Ukuran:
@@ -62,7 +62,7 @@ Di komponen, ubah className:
 Jika ingin menambah gambar lain, download gratis dari:
 - [Freepik](https://www.freepik.com) - Search: "blue floral watercolor"
 - [Pexels](https://www.pexels.com) - Search: "blue roses illustration"
-- [Unsplash](https://unsplash.com) - Search: "dusty blue floral"
+- [Unsplash](https://unsplash.com) - Search: "maroon floral"
 - [Pixabay](https://pixabay.com) - Free images & illustrations
 
 ## 📏 Image Optimization Tips

@@ -18,7 +18,7 @@ const DoaPengantin = () => {
   ]
 
   return (
-    <section className="relative py-20 px-4 bg-gradient-to-b from-white via-dusty-blue-50/30 to-white overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-dusty-blue-50 via-white to-dusty-blue-50 overflow-hidden">
       <div className="absolute inset-0 pattern-dots opacity-25 pointer-events-none" />
 
       {/* Background ambient blobs */}

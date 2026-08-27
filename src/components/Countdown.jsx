@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Clock, Heart } from 'lucide-react'
+import { weddingDate } from '../data/wedding'
 
 const FlipDigit = ({ value }) => {
   const display = value.toString().padStart(2, '0')
@@ -13,7 +14,7 @@ const FlipDigit = ({ value }) => {
         >
           <span
             className="absolute inset-0 flex items-center justify-center text-3xl md:text-5xl font-display font-bold text-gold-400"
-            style={{ textShadow: '0 0 18px rgba(212,175,55,0.5)' }}
+            style={{ textShadow: '0 0 18px rgba(196,161,126,0.5)' }}
           >
             {digit}
           </span>
@@ -26,7 +27,7 @@ const FlipDigit = ({ value }) => {
 }
 
 const Countdown = () => {
-  const weddingDate = new Date('2026-05-30T08:00:00').getTime()
+  const weddingTime = new Date(weddingDate.iso).getTime()
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -38,7 +39,7 @@ const Countdown = () => {
   useEffect(() => {
     const tick = () => {
       const now = new Date().getTime()
-      const distance = weddingDate - now
+      const distance = weddingTime - now
       if (distance > 0) {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -51,7 +52,7 @@ const Countdown = () => {
     tick()
     const interval = setInterval(tick, 1000)
     return () => clearInterval(interval)
-  }, [weddingDate])
+  }, [weddingTime])
 
   const TimeBox = ({ value, label }) => (
     <div className="relative group">
@@ -68,7 +69,7 @@ const Countdown = () => {
   )
 
   return (
-    <section className="relative py-20 px-4 bg-gradient-to-b from-white via-dusty-blue-50 to-white overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-dusty-blue-50 via-white to-dusty-blue-50 overflow-hidden">
       {/* Background ambient */}
       <div className="absolute inset-0 pattern-dots opacity-30 pointer-events-none" />
       <motion.div
@@ -94,7 +95,7 @@ const Countdown = () => {
             transition={{ duration: 0.6, type: 'spring', stiffness: 150 }}
             className="inline-block mb-4"
           >
-            <Clock className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(212,175,55,0.5)]" />
+            <Clock className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(196,161,126,0.5)]" />
           </motion.div>
           <h2 className="font-script text-5xl md:text-7xl text-gradient-gold mb-3">
             Hitung Mundur
@@ -127,7 +128,7 @@ const Countdown = () => {
             >
               <Heart className="w-4 h-4 text-gold-500 fill-current" />
             </motion.div>
-            Sabtu, 30 Mei 2026
+            {weddingDate.full}
           </div>
         </motion.div>
       </div>

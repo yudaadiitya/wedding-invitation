@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Heart, Instagram, Sparkles } from 'lucide-react'
 import { useRef } from 'react'
+import { couple, quran } from '../data/wedding'
 
 const TiltCard = ({ children, className = '' }) => {
   const ref = useRef(null)
@@ -58,42 +59,41 @@ const ProfileCard = ({ name, fullName, instagram, igHandle, parentLabel, parents
             <motion.div
               whileHover={{ scale: 1.06 }}
               transition={{ type: 'spring', stiffness: 250 }}
-              className="w-40 h-40 bg-gradient-to-br from-dusty-blue-100 to-dusty-blue-300 rounded-full flex items-center justify-center overflow-hidden shadow-inner-glow"
+              className="w-40 h-40 bg-gradient-to-br from-dusty-blue-700 via-dusty-blue-800 to-dusty-blue-900 rounded-full flex items-center justify-center overflow-hidden shadow-inner-glow"
             >
-              <span className="font-script text-7xl text-gradient-gold drop-shadow-xl">
+              <span className="font-script text-7xl text-gradient-rose drop-shadow-xl">
                 {emoji}
               </span>
             </motion.div>
           </div>
         </div>
 
-        <h3 className="font-script text-5xl md:text-6xl text-gradient-gold mb-3">
+        <h3 className="font-script text-5xl md:text-6xl text-gradient-gold mb-3 drop-shadow-sm">
           {name}
         </h3>
         <h4 className="font-display text-xl md:text-2xl font-semibold text-dusty-blue-800 mb-3">
           {fullName}
         </h4>
 
-        <motion.a
-          href={instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.08 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 mb-5 rounded-full bg-gradient-to-r from-dusty-blue-100 to-gold-100 text-dusty-blue-700 hover:text-gold-600 transition-colors duration-300 shadow-sm"
-        >
-          <Instagram className="w-4 h-4" />
-          <span className="font-sans text-sm font-medium">{igHandle}</span>
-        </motion.a>
+        {instagram && (
+          <motion.a
+            href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.08 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 mb-5 rounded-full bg-gradient-to-r from-dusty-blue-100 to-gold-100 text-dusty-blue-700 hover:text-gold-600 transition-colors duration-300 shadow-sm"
+          >
+            <Instagram className="w-4 h-4" />
+            <span className="font-sans text-sm font-medium">{igHandle}</span>
+          </motion.a>
+        )}
 
         <div className="space-y-1">
           <p className="font-sans text-sm text-dusty-blue-500 italic">
             {parentLabel}
           </p>
           <p className="font-display text-lg font-semibold text-dusty-blue-700">
-            {parents.father}
-          </p>
-          <p className="font-display text-lg font-semibold text-dusty-blue-700">
-            & {parents.mother}
+            {parents.father} &amp; {parents.mother}
           </p>
         </div>
       </div>
@@ -103,7 +103,7 @@ const ProfileCard = ({ name, fullName, instagram, igHandle, parentLabel, parents
 
 const Mempelai = () => {
   return (
-    <section className="relative py-20 px-4 bg-gradient-to-b from-white via-dusty-blue-50/40 to-white overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-dusty-blue-50 via-white to-dusty-blue-50 overflow-hidden">
       {/* pattern dots */}
       <div className="absolute inset-0 pattern-dots opacity-40 pointer-events-none" />
 
@@ -135,23 +135,23 @@ const Mempelai = () => {
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           <ProfileCard
-            name="Asri"
-            fullName="Asri Aditya Lestari, M.Pd., Gr."
-            instagram="https://instagram.com/asriadityalestari"
-            igHandle="@asriadityalestari"
-            parentLabel="Putri Pertama dari"
-            parents={{ father: 'Bpk. Atang Hermawan', mother: 'Ibu Popong Siti Hajar' }}
-            emoji="AS"
+            name={couple.bride.nickname}
+            fullName={couple.bride.fullName}
+            instagram={couple.bride.instagram}
+            igHandle={couple.bride.instagram}
+            parentLabel={couple.bride.childOrder}
+            parents={couple.bride.parents}
+            emoji={couple.bride.initials}
             delay={0}
           />
           <ProfileCard
-            name="Ayuda"
-            fullName="Ayuda Noveliana Megus, S.Par."
-            instagram="https://instagram.com/okazakiiyuda7"
-            igHandle="@okazakiiyuda7"
-            parentLabel="Putra Pertama dari"
-            parents={{ father: 'Bpk. Ade Yuspida', mother: 'Ibu Eli Subiarsih' }}
-            emoji="AY"
+            name={couple.groom.nickname}
+            fullName={couple.groom.fullName}
+            instagram={couple.groom.instagram}
+            igHandle={couple.groom.instagram}
+            parentLabel={couple.groom.childOrder}
+            parents={couple.groom.parents}
+            emoji={couple.groom.initials}
             delay={0.2}
           />
         </div>
@@ -165,12 +165,15 @@ const Mempelai = () => {
           className="text-center mt-16 max-w-3xl mx-auto relative"
         >
           <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-7xl text-gold-300 font-serif leading-none select-none">"</span>
+          <p className="font-arabic text-2xl md:text-3xl text-dusty-blue-800 leading-loose mb-5" style={{ direction: 'rtl' }}>
+            {quran.arabic}
+          </p>
           <p className="font-serif italic text-lg md:text-xl text-dusty-blue-700 leading-relaxed relative z-10 px-6">
-            Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.
+            {quran.translation}
           </p>
           <div className="flex items-center justify-center gap-3 mt-4">
             <span className="h-px w-8 bg-gold-400" />
-            <p className="font-sans text-sm text-gold-600 tracking-widest uppercase">QS. Ar-Rum: 21</p>
+            <p className="font-sans text-sm text-gold-600 tracking-widest uppercase">{quran.source}</p>
             <span className="h-px w-8 bg-gold-400" />
           </div>
         </motion.div>

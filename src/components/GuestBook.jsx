@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, Send, User, Heart, Check, AlertCircle } from 'lucide-react'
 import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
-const LOCAL_KEY = 'guestbook_asri_ayuda'
+const LOCAL_KEY = 'guestbook_maudya_rama'
 const LAST_SUBMIT_KEY = 'guestbook_last_submit'
 const MIN_FILL_MS = 3000
 const COOLDOWN_MS = 30_000
@@ -142,7 +142,7 @@ const GuestBook = () => {
   }
 
   return (
-    <section className="relative py-20 px-4 bg-gradient-to-b from-white via-dusty-blue-50/30 to-white overflow-hidden">
+    <section className="relative py-20 px-4 bg-gradient-to-b from-dusty-blue-50 via-white to-dusty-blue-50 overflow-hidden">
       <motion.div
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 14, repeat: Infinity }}
@@ -162,7 +162,7 @@ const GuestBook = () => {
             transition={{ duration: 3, repeat: Infinity }}
             className="inline-block mb-4"
           >
-            <MessageCircle className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(212,175,55,0.5)]" />
+            <MessageCircle className="text-gold-500 w-12 h-12 drop-shadow-[0_0_12px_rgba(196,161,126,0.5)]" />
           </motion.div>
           <h2 className="font-script text-5xl md:text-7xl animate-gradient-text mb-3">
             Buku Tamu
@@ -271,7 +271,7 @@ const GuestBook = () => {
               whileTap={loading ? {} : { scale: 0.98 }}
               className="group/btn relative w-full overflow-hidden rounded-xl py-3.5 font-sans font-medium text-white flex items-center justify-center gap-2 shadow-glow-blue disabled:opacity-60 disabled:cursor-not-allowed"
               style={{
-                background: 'linear-gradient(135deg, #5e7fa0 0%, #4a6686 50%, #3a506b 100%)',
+                background: 'linear-gradient(135deg, #996D6D 0%, #845B5B 50%, #714646 100%)',
               }}
             >
               <span className="absolute inset-0 shimmer-bg opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
