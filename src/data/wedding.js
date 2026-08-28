@@ -106,3 +106,11 @@ export const giftAddress = {
 
 export const closingNote =
   'Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan do\'a restu kepada kedua mempelai.'
+
+// Ganti lagu cukup dengan menaruh file baru di public/assets/audio/
+// lalu ubah `src` di bawah. Pastikan Anda punya hak pakai atas lagunya.
+export const music = {
+  src: '/assets/audio/background-music.mp3',
+  title: 'Flowers In The Window (Remastered 2021)',
+  artist: 'Travis',
+}

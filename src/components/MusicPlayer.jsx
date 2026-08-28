@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Music, Pause, Play, Volume2, VolumeX } from 'lucide-react'
+import { music } from '../data/wedding'
 
 const MusicPlayer = ({ isOpened }) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -39,7 +40,7 @@ const MusicPlayer = ({ isOpened }) => {
   return (
     <>
       <audio ref={audioRef} loop preload="auto">
-        <source src="/assets/audio/background-music.mp3" type="audio/mp3" />
+        <source src={music.src} type="audio/mpeg" />
       </audio>
 
       <AnimatePresence>
