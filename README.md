@@ -1,176 +1,91 @@
-# 💒 Website Undangan Pernikahan - Asri & Ayuda
+# 💒 Undangan Pernikahan — Maudya & Rama
 
-Website undangan pernikahan modern dengan tema floral dusty blue yang elegan.
+Undangan pernikahan digital, tema burgundy & gold. Sabtu, 5 September 2026 di Mepro Hall, Cinambo, Kota Bandung.
 
 ## 🎨 Fitur
 
 - ✅ Desain responsif (mobile, tablet, desktop)
-- ✅ Tema dusty blue dengan aksen gold
-- ✅ Animasi smooth dengan Framer Motion
-- ✅ Countdown timer ke hari pernikahan
-- ✅ Informasi mempelai dan acara
+- ✅ Cover modal yang membuka ke undangan, dengan nama tamu dari URL
+- ✅ Navbar sticky dengan penanda section aktif
+- ✅ Countdown ke hari pernikahan
+- ✅ Profil mempelai, doa, detail akad & resepsi
 - ✅ Google Maps lokasi acara
-- ✅ Buku tamu digital dengan localStorage
-- ✅ Amplop digital (transfer bank)
-- ✅ Music player dengan kontrol
-- ✅ Daftar turut mengundang
+- ✅ Buku tamu + konfirmasi kehadiran (Supabase, fallback localStorage)
+- ✅ Amplop digital (transfer bank & alamat kado)
+- ✅ Music player dengan kontrol dan visualizer
+
+## 🧱 Stack
+
+| | |
+|---|---|
+| Framework | React 18 + Vite |
+| Styling | Tailwind CSS (di-build lokal, bukan CDN) |
+| Animasi scroll | AOS |
+| Ikon | Font Awesome Free (bundled) |
+| Backend buku tamu | Supabase |
+| Deploy | Vercel |
+
+Seluruh dependency di-bundle — tidak ada `<script>` CDN — supaya lolos CSP ketat di [`vercel.json`](vercel.json).
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Node.js v18 atau lebih tinggi
-- npm atau yarn
-
-### Installation
-
-1. Clone atau download project ini
-2. Install dependencies:
 ```bash
 npm install
-```
-
-3. Jalankan development server:
-```bash
+cp .env.example .env   # isi kredensial Supabase (opsional)
 npm run dev
 ```
 
-4. Buka browser dan akses `http://localhost:5173`
+Tanpa `.env`, buku tamu otomatis jatuh ke `localStorage` dan tetap bisa dipakai.
 
-## 📁 Struktur Project
+## 🔗 Nama tamu di URL
+
+Tambahkan `?untuk=` (atau `?to=`) pada tautan undangan:
 
 ```
-wedding-invitation/
-├── public/
-│   └── assets/
-│       ├── images/     # Tambahkan gambar floral di sini
-│       └── audio/      # Tambahkan musik background di sini
-├── src/
-│   ├── components/     # Semua komponen React
-│   │   ├── Hero.jsx
-│   │   ├── Mempelai.jsx
-│   │   ├── Countdown.jsx
-│   │   ├── EventDetails.jsx
-│   │   ├── Location.jsx
-│   │   ├── GuestBook.jsx
-│   │   ├── DigitalEnvelope.jsx
-│   │   ├── TurutMengundang.jsx
-│   │   ├── MusicPlayer.jsx
-│   │   └── Footer.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-└── package.json
+https://contoh.com/?untuk=Budi-Santoso
 ```
 
-## 🎵 Menambahkan Musik Background
+Tanda hubung diubah jadi spasi dan tiap kata dikapitalisasi.
 
-1. Siapkan file musik dalam format MP3 (instrumental/acoustic)
-2. Simpan file sebagai `background-music.mp3` di folder `public/assets/audio/`
-3. Musik akan otomatis diputar saat tombol "Buka Undangan" diklik
+## 📝 Mengubah isi undangan
 
-**Rekomendasi:**
-- Format: MP3
-- Durasi: 3-5 menit (akan loop otomatis)
-- Ukuran: < 5MB
-- Contoh lagu: "A Thousand Years" instrumental, "Perfect" instrumental
+Seluruh teks, tanggal, lokasi, rekening, dan lagu ada di satu berkas:
 
-## 🖼️ Menambahkan Gambar
-
-Tambahkan gambar dekorasi floral ke folder `public/assets/images/`:
-- Format: PNG (dengan transparansi) atau WebP
-- Ukuran maksimal: 500KB per gambar
-- Sumber gratis: Freepik, Pexels, Unsplash
-
-## 🎨 Kustomisasi
-
-### Mengubah Warna
-Edit file `tailwind.config.js` untuk mengubah palet warna:
-```javascript
-colors: {
-  'dusty-blue': {...},
-  'gold': {...}
-}
+```
+src/data/wedding.js
 ```
 
-### Mengubah Font
-Edit file `index.html` untuk mengganti Google Fonts yang digunakan.
+Komponen membaca dari sana — hindari menulis ulang data langsung di JSX.
 
-### Mengubah Data
-Semua data (nama, tanggal, lokasi, dll) ada di dalam masing-masing komponen di folder `src/components/`.
+Struktur berkas lain:
 
-## 📱 Testing Responsiveness
+```
+src/
+├── WeddingInvitation.jsx   # seluruh tampilan undangan
+├── data/wedding.js         # sumber tunggal data undangan
+├── lib/supabase.js         # klien Supabase
+├── assets/                 # ornamen bunga lily, daun emas, rose emas
+└── index.css               # base style + utility kustom
+public/assets/audio/        # lagu latar
+supabase/seed-wishes.sql    # seed ucapan awal buku tamu
+```
 
-Website sudah dioptimasi untuk:
-- Mobile (320px - 767px)
-- Tablet (768px - 1023px)
-- Desktop (1024px+)
+## 🎵 Mengganti lagu
 
-Untuk test di berbagai device:
-1. Buka browser DevTools (F12)
-2. Toggle device toolbar (Ctrl+Shift+M)
-3. Test di berbagai ukuran layar
+Taruh berkas MP3 di `public/assets/audio/`, lalu ubah `music.src` di `src/data/wedding.js`. Pastikan Anda punya hak pakai atas lagunya.
 
-## 🏗️ Build untuk Production
+## 🗄️ Buku tamu
+
+Lihat [SUPABASE_SETUP.md](SUPABASE_SETUP.md) untuk membuat tabel `guestbook`, mengatur RLS, dan mengisi ucapan awal lewat `supabase/seed-wishes.sql`.
+
+## 📦 Build & Deploy
 
 ```bash
 npm run build
 ```
 
-File hasil build akan ada di folder `dist/` dan siap untuk di-deploy.
-
-## 🌐 Deployment
-
-### Deploy ke Vercel (Gratis & Mudah)
-
-1. Push code ke GitHub
-2. Kunjungi [vercel.com](https://vercel.com)
-3. Import repository GitHub Anda
-4. Vercel akan otomatis detect Vite dan deploy
-5. Website langsung online dengan domain gratis!
-
-### Deploy ke Netlify
-
-1. Push code ke GitHub
-2. Kunjungi [netlify.com](https://netlify.com)
-3. Connect GitHub repository
-4. Build command: `npm run build`
-5. Publish directory: `dist`
-6. Deploy!
-
-## 📝 Data Pernikahan
-
-### Mempelai
-- **Wanita**: Asri Aditya Lestari, M.Pd., Gr.
-- **Pria**: Ayuda Noveliana Megus, S.Par.
-
-### Acara
-- **Tanggal**: Sabtu, 30 Mei 2026
-- **Akad**: 08:00 - Selesai
-- **Resepsi**: 10:30 - Selesai
-- **Lokasi**: Dsn. Bojong Inong, RT 01 RW 03, Desa Jatimulya, Kab. Sumedang
-
-### Amplop Digital
-- **BCA**: 2330905878 a/n Ayuda Noveliana Megus
-- **Mandiri**: 1310018040537 a/n Asri Aditya Lestari
-
-## 🛠️ Teknologi
-
-- **React 18** - UI Library
-- **Vite** - Build Tool
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animasi
-- **Lucide React** - Icons
-
-## 📄 License
-
-Free to use untuk keperluan pribadi.
-
-## 🤝 Support
-
-Jika ada pertanyaan atau butuh bantuan, silakan buka issue di repository ini.
+Lihat [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ---
 
-**Selamat Menikah Asri & Ayuda! 💙💛**
-
-*Made with ❤️ for a special day*
+> ⚠️ Nomor rekening di `src/data/wedding.js` masih menyalin undangan referensi — ganti sebelum undangan dipakai sungguhan.

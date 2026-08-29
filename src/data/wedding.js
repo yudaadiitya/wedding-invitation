@@ -7,7 +7,7 @@ export const couple = {
     nickname: 'Maudy',
     coverName: 'Maudya',
     fullName: 'Maudya Safitri',
-    initials: 'M',
+    initials: 'MS',
     childOrder: 'Putri Ke 2 dari 2 Bersaudara',
     parents: { father: 'Bapak Zulfikar Ady', mother: 'Ibu Juriati' },
     instagram: null,
@@ -16,7 +16,7 @@ export const couple = {
     nickname: 'Rama',
     coverName: 'Rama',
     fullName: 'Muhammad Rahadian Ramadhan',
-    initials: 'R',
+    initials: 'MR',
     childOrder: 'Putra Ke 1 dari 3 Bersaudara',
     parents: { father: 'Bapak Ruswandi', mother: 'Ibu Titin' },
     instagram: null,
@@ -41,9 +41,10 @@ export const venue = {
   mapsQuery: 'Mepro Hall, Jalan Soekarno No. 789, Babakan Penghulu, Cinambo, Kota Bandung',
 }
 
-export const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(
-  venue.mapsQuery
-)}&output=embed`
+// Embed ini menyematkan place-id Mepro Hall yang sebenarnya, lebih akurat
+// daripada pencarian berbasis query.
+export const mapsEmbedUrl =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7188737525384!2d107.6908569!3d-6.9360814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68cce39bf3ca8d%3A0xb3a69a48972ca819!2sMepro%20Hall!5e0!3m2!1sid!2sid!4v1690000000000!5m2!1sid!2sid'
 
 export const mapsLinkUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   venue.mapsQuery
@@ -72,6 +73,28 @@ export const quran = {
   translation:
     'Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.',
   source: 'QS. Ar-Rum: 21',
+}
+
+export const prayers = [
+  {
+    arabic:
+      'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+    translation:
+      'Ya Tuhan kami, anugerahkanlah kepada kami pasangan dan keturunan kami sebagai penyenang hati (kami), dan jadikanlah kami pemimpin bagi orang-orang yang bertakwa.',
+    source: 'QS. Al-Furqan: 74',
+  },
+  {
+    arabic: 'بَارَكَ اللهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ',
+    translation:
+      'Semoga Allah memberkahimu dan melimpahkan berkah atasmu, serta mengumpulkan kalian berdua dalam kebaikan.',
+    source: 'HR. Abu Daud',
+  },
+]
+
+export const footerHadith = {
+  text:
+    'Sesungguhnya Allah sangat mencintai hamba-Nya yang menikah dan membenci hamba-Nya yang membujang.',
+  source: 'HR. Bukhari',
 }
 
 // CATATAN: nomor rekening di bawah disalin apa adanya dari undangan referensi.

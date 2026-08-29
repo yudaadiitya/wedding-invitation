@@ -142,6 +142,24 @@ group by attendance;
 
 ---
 
+## 7b. (Opsional) Mengisi ucapan awal
+
+Repo menyertakan `supabase/seed-wishes.sql` berisi 25 ucapan awal.
+
+1. Buka **SQL Editor > New query** di dashboard Supabase.
+2. Tempel isi `supabase/seed-wishes.sql`, lalu **Run**.
+3. Jalankan **sekali saja** — mengulang akan menduplikasi baris.
+
+Catatan:
+
+- `attendance` sudah dipetakan ke enum tabel (`hadir` / `tidak_hadir`).
+- `created_at` diisi mundur dari waktu eksekusi, jadi label "N Jam/Hari Yang Lalu"
+  di halaman ikut masuk akal.
+- Skrip ini **belum pernah dijalankan** dari sisi kode — repo tidak menyimpan
+  kredensial Supabase, jadi Anda yang menjalankannya.
+
+---
+
 ## 8. Batas Free Tier Supabase
 
 Free tier (per Mei 2026):
